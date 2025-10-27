@@ -1,0 +1,179 @@
+/*Estilo para cabeçalho e corpo de todas as telas*/
+.cor_fundo_header{
+    background-color: #2E7D32; /* Um tom de verde escuro */
+    
+}
+.cor_fundo_body{
+    background-color: #F5F5F5;
+}
+
+/* Estilo base para tela de login */
+.cor_botao_cadastrar{
+    background-color: #D9D9D9;
+}
+
+/*Botão voltar da tela de cadastro*/
+
+
+/* Estilo base da tela de cadastro */
+#senha {
+    width: 100%;
+    /* Adiciona um espaço à direita para o ícone não sobrepor o texto */
+    padding-right: 0px; /* Espaço para o ícone */
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    z-index: 1; /* Garante que o campo de senha fique abaixo do ícone */
+}
+/* Estilo para o ícone de olho dentro do campo de senha */
+#toggle-password{
+    position: absolute;
+    /* Posiona o ícone dentro do campo */
+    top: 30%; /*Alinha verticalmente a partir do topo da label*/
+    right: 3px; /* Distância da borda direita */
+    transform: translateY(-50%); /* Ajuste fino para centralizar perfeitamente*/
+    z-index: 5000; /* Garante que o ícone fique acima do campo de entrada */
+
+    /* Remove estilos padrão do botão */
+    background: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    color: #555; /* Cor do ícone */ 
+}
+
+#toggle-password2{
+    position: absolute;
+    /* Posiona o ícone dentro do campo */
+    top: 30%; /*Alinha verticalmente a partir do topo da label*/
+    right: 3px; /* Distância da borda direita */
+    transform: translateY(-50%); /* Ajuste fino para centralizar perfeitamente*/
+    z-index: 5000; /* Garante que o ícone fique acima do campo de entrada */
+
+    /* Remove estilos padrão do botão */
+    background: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    color: #555; /* Cor do ícone */ 
+}
+
+
+.mensagem-erro-cpf-sequencial{
+    color: #D8000C; /* Um tom de de vermelho forte */
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 5px; /*Um pequeno espaço do campo acima*/
+    
+    /*A MÁGICA COMEÇA AQUI: Escondido por padrão*/
+    display: none;
+}
+.mensagem-erro-cpf-sequencial.ativa{
+    /*Quando esta classe for adicionada, mensagem aparece! */
+    display: block;
+}
+
+
+/* Estilo base para a mensagem de erro*/
+.mensagem-erro-email-obrigatorio{
+    color: #D8000C; /* Um tom de de vermelho forte */
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 5px; /*Um pequeno espaço do campo acima*/
+    
+    /*A MÁGICA COMEÇA AQUI: Escondido por padrão*/
+    display: none;
+}
+.mensagem-erro-formato-incorreto{
+    color: #D8000C; /* Um tom de de vermelho forte */
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 5px; /*Um pequeno espaço do campo acima*/
+    
+    /*A MÁGICA COMEÇA AQUI: Escondido por padrão*/
+    display: none;
+}
+
+/*Criamos uma classe "ativadora" que o JavaScript vai adicionar */
+.mensagem-erro-email-obrigatorio.ativa{
+    /*Quando esta classe for adicionada, mensagem aparece! */
+    display: block;
+}
+.mensagem-erro-formato-incorreto.ativa{
+    /*Quando esta classe for adicionada, mensagem aparece! */
+    display: block;
+}
+
+/*Configurações do body do cadastrar*/
+.body-cadastrar{
+    height: cal(100vh - 70px);
+}
+
+/*Configurações do header*/
+.header-demma{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+}
+.botao-conta{
+    background-color: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    background: none; /* Remove o fundo do botão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    color: #D9D9D9; /* Cor do ícone */
+    border-radius: 50%; /* Torna o botão circular */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+}
+.botao-conta:hover {
+    background-color: #A5D6A7; /* Cor de fundo verde ao passar o mouse */
+}
+
+/* Configurações do botão de voltar e próximo */
+.botao-seta {
+    display: flex;
+    align-items: end;
+    cursor: pointer;
+    position: relative; /* Permite posicionamento absoluto dos ícones dentro do botão */
+    background-color: #D9D9D9; /* Cor de fundo verde */
+    border-bottom: #000000; /* Remove a borda padrão */
+    color: #000000; /* Cor do ícone */
+
+    
+    
+
+}
+.botao-seta:hover {
+    background-color: #A5D6A7; /* Cor de fundo verde ao passar o mouse */
+}
+
+/* Email recuperação*/
+/* Configurações do botão cancelar e avançar*/
+.botao-avancar{
+    cursor: pointer;
+    background-color: #A5D6A7;
+    border-radius: 40%;
+    border-bottom: #000000; /* Remove a borda padrão */
+    color: #000000; /* Cor do texto */ 
+    padding: 10px 20px; /* Espaçamento interno */
+}
+.botao-avancar:hover{
+    background-color: #2E7D32;
+}
+.botao-cancelar{
+    border-radius: 40%;
+    background-color: #D9D9D9; /* Cor de fundo verde */
+}
+.botao-cancelar:hover{
+    background-color: #555;
+}
+
+/* TELA DE RECUPERAÇÃO DE SENHA */
+/* Configurações do botão resetar senha */
+.botao-resetar-senha{
+    cursor: pointer;
+    background-color: #A5D6A7;
+    border-radius: 15%;
+    border-bottom: #000000; /* Remove a borda padrão */
+    color: #000000; /* Cor do texto */ 
+    padding: 10px 20px; /* Espaçamento interno */
+}
+

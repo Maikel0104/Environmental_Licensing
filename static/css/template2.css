@@ -1,0 +1,217 @@
+/* Estilo base para a sidebar */
+.side-bar-chat {
+    position: fixed ;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #343a40;
+    color: white;
+    transition: width 0.3s ease;
+    z-index: 1000; 
+}
+@media (max-width: 768px){
+    .menu {
+        display: none; /* Esconde o menu em telas pequenas */
+    }
+    .menu.ativo{
+        display: block; /* Exibe o menu em telas pequenas */
+    }
+}
+
+.botao-sidebar-mobile{
+    
+    border: none; /* Remove a borda do botão */
+    border-radius: 10%; /* Torna o botão circular */
+    background: none; /* Remove o fundo do botão */
+    background-color: #A5D6A7;
+    color: #000000; /* Cor do ícone */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+.botao-sidebar-mobile:hover {
+    background-color: #81C784; /* Cor de fundo verde mais escuro ao passar o mouse */
+}
+.side-bar-chat.ativa {
+    width: 300px;
+}
+
+.side-bar-chat.desativa {
+    width: 100px;
+}
+
+/* Conteúdo principal que se ajusta conforme a largura da sidebar */
+.conteudo {
+    margin-left: 300px;
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+}
+
+.conteudo.reduzido {
+    margin-left: 100px;
+}
+
+/* Estilo do botão da sidebar */
+.botao-livro-aberto {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Oculta os textos dos itens do menu ao encolher a sidebar */
+.side-bar-chat.desativa .list-unstyled span {
+    display: none; 
+   
+}
+
+/* Diminui a logo ao encolher */
+.side-bar-chat.desativa .img-logo {
+    width: 100px !important;
+}
+.campo-chat {
+    bottom: 0;
+    height: calc(100vh - 70px);
+    background-color: #F5F5F5;
+    
+}
+/* Configurações do botão de voltar e próximo da tela home */
+.botao-seta {
+    cursor: pointer;
+    background-color: #D9D9D9; /* Cor de fundo verde */
+    border: #000000; /* Remove a borda padrão */
+    color: #000000; /* Cor do ícone */
+}
+.botao-seta:hover {
+    background-color: #A9A9A9; /* Cor de fundo verde mais escuro ao passar o mouse */
+}
+.configuracoes-botoes-tela{
+    position: relative;
+    border: none; /* Remove a borda padrão */
+    background-color: #A5D6A7; /* Cor de fundo verde */
+    top: 2em;   
+
+}
+/* Estilo para a área de sugestões */
+.sugestoes{
+    position: relative;
+    background: #A5D6A7;
+    border-radius: 10px; /* Bordas arredondadas */  
+    top: 5em
+
+}
+.area-input{
+    position: relative; /* Necessário para posicionar o campo de entrada e os botões dentro do contêiner */
+    background-color: #2E7D32;
+    width: 100%;
+    display: flex; /* Permite que os elementos internos sejam alinhados horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    padding: 10px; /* Espaçamento interno */
+    top: 5em;
+
+    
+     
+}
+.input-chat{
+    border: none; /* Remove a borda padrão */;
+    background-color: #2E7D32; /* Cor de fundo verde */
+    color: #ffffff; /* Cor do texto */
+    width: 100%; /* Preenche todo o espaço disponível */
+    position: relative; /* Necessário para posicionar o ícone dentro do campo */
+    padding: 10px; /* Espaçamento interno */
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: none; /* Remove a sombra padrão */
+    min-height: 60px;
+    max-height: 200px;
+    overflow-y: auto; /* Permite rolagem vertical se o conteúdo for maior que o campo */
+    
+  
+}
+
+.input-chat::placeholder {
+    color: #ffffff; /* Cor do texto do placeholder */
+    opacity: 0.7; /* Opacidade do placeholder */
+    font-size: 1.3em; /* Tamanho do texto do placeholder */
+    font-weight: 300; /* Peso do texto do placeholder */
+}
+
+/* Estilo para o campo de entrada de arquivo */
+.botao-anexar{
+    position: relative;
+    display: none; /* Esconde o botão de arquivo */
+    
+}
+/* Estilo para o rótulo do botão de arquivo */
+.rotulo-anexar {
+    position: relative;
+    display: inline-block; /* Permite que o rótulo seja clicável */
+   
+}
+.rotulo-anexar:hover {
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    text-decoration: underline; /* Adiciona um sublinhado ao passar o mouse */   
+}
+.botao-enviar-chat{
+    position: relative;
+    background: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    color: #000000; /* Cor do ícone */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+   
+}
+
+.div-botoes-chat{
+    min-width: 60%;
+    margin-left: 3em;
+}
+
+/*Configurações do header*/
+.header-demma{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+}
+.botao-conta{
+    background-color: none; /* Remove o fundo do botão */
+    border: none; /* Remove a borda do botão */
+    background: none; /* Remove o fundo do botão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    color: #D9D9D9; /* Cor do ícone */
+    border-radius: 50%; /* Torna o botão circular */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+}
+.botao-conta:hover {
+    background-color: #A5D6A7; /* Cor de fundo verde ao passar o mouse */
+}
+/*Estilo para cabeçalho e corpo de todas as telas*/
+.cor_fundo_header{
+    background-color: #2E7D32; /* Um tom de verde escuro */
+    
+}
+.cor_fundo_body{
+    background-color: #F5F5F5;
+}
+footer{
+    position: relative;
+    top: 5em;
+}
+
+.botao-salvar-pdf{  
+    background-color: none; /* Cor de fundo verde */
+    border: none; /* Remove a borda do botão */
+    border-bottom: none;
+    color: #000000; /* Cor do ícone */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    padding: 8px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */   
+}
+
+body{
+    overflow-y: auto;
+    
+}
