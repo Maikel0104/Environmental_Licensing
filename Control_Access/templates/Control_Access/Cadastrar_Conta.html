@@ -1,0 +1,104 @@
+{% extends "Control_Access/base.html" %}
+{% block content %}
+  <div class="row" style="min-height: 80vh;">
+    <div class="col-7 col-sm-3 col-lg-1 d-flex flex-column justify-content-start rounded ">
+      <a href="{% url 'login' %}">
+        <button type="button" class="botao-voltar p-3 mt-2 ms-5 rounded-5" ><i class="fa-solid fa-arrow-left"></i></button>
+      </a>
+    </div>
+    <div class="col-11 col-sm-10 col-md-8 col-lg-12 mx-auto d-flex flex-column justify-content-center align-items-center">
+      <form method="post" class="mx-auto col-11 col-sm-8 col-lg-4">
+          {% csrf_token %}
+          <!-- SEÇÃO DO NOME COMPLETO-->
+          <div class="mb-3">
+            <!-- Aqui exibirá o texto nome_completo -->
+            {{ form1.nome_completo.label_tag }}
+            {{ form1.nome_completo }}
+            
+            {% if form1.nome_completo.errors %}
+              <div class="alert alert-danger mt-1 p-1">
+                {{ form1.nome_completo.errors }}
+              </div>
+            {% endif %}
+          </div>  
+          <!-- SEÇÃO DO CPF-->
+          <div class="mb-3">
+            {{ form2.cpf.label_tag }}
+            {{ form2.cpf }}
+            {% if form2.cpf.errors %}
+              <div class="alert alert-danger mt-1 p-1">
+                {{ form2.cpf.errors }}
+              </div> 
+            {% endif %}                        
+          </div>
+          <!-- SEÇÃO DA DATA DE NASCIMENTO-->
+          <div class="mb-3">
+            {{form2.data_nascimento.label_tag}}
+            {{form2.data_nascimento}}
+            {% if form2.data_nascimento.errors %}
+              <div class="alert alert-danger mt-1 p-1">
+                {{ form2.data_nascimento.errors }}
+              </div>
+            {% endif %} 
+          </div>
+          <!-- SEÇÃO DO EMAIL E SENHA -->
+          <div>
+            <!-- SEÇÃO EMAIL-->
+            <div class="mb-3">
+              {{ form1.email.label_tag }}
+              {{ form1.email }}
+              {% if form1.email.errors %}
+                <div class="alert alert-danger mt-1 p-1">
+                  {{ form1.email.errors }}
+                </div>
+              {% endif %}
+            </div> <!-- FIM DIV EMAIL -->      
+            
+            <!-- SEÇÃO SENHA -->
+            <div>
+              {{ form1.password1.label_tag }}
+              <div class="mb-3 input-group">
+                {{ form1.password1 }}
+                {% if form1.password1.errors %}
+                  <div class = "alert alert-danger mt-1 p-1">
+                    {{ form1.password1.errors }}
+                  </div>
+                {% endif %}
+                <!-- Campo de mostrar senha -->
+                <button type="button" id="toggle-password" class="btn btn-outline-secondary mt-2" id="mostrarSenha">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                
+              </div> <!-- FIM DIV INPUT SENHA -->
+              {{ form1.password2.label_tag }}
+              <div class="mb-3 input-group">  
+                {{ form1.password2 }}
+                {% if form1.password2.errors %}
+                  <div class = "alert alert-danger mt-1 p-1">
+                    {{ form1.password2.errors }}
+                  </div>
+                {% endif %}
+                <button type="button" id="toggle-password2" class="btn btn-outline-secondary mt-2" id="mostrarSenha">
+                  <i class="fa-solid fa-eye"></i>
+                </button>                            
+              </div> <!-- FIM DIV INPUT SENHA -->
+              <!-- DIV REQUISITOS SENHA -->
+              <div>
+                <ul>
+                  <li id="req-length"> A senha deve conter pelo menos oito caracteres; </li>
+                  <li id="req-uppercase"> A senha deve conter pelo menos uma letra maiúscula; </li>
+                  <li id="req-lowercase"> A senha deve conter pelo menos uma letra minúscula; </li>
+                  <li id="req-number"> A senha deve conter pelo menos um número; </li>
+                  <li id="req-symbol"> A senha deve conter pelo menos um símbolo; </li>
+                </ul>
+              </div> <!-- FIM DIV REQUISITOS SENHA -->
+            </div> <!-- FIM DIV SENHA -->
+          </div> <!-- FIM DIV DE EMAIL E SENHA-->
+          <!-- SEÇÃO DO BOTÃO CADASTRAR-->
+          <div>
+            <button type="submit" class="form-control btn btn-lg btn-success mb-3">Cadastrar</button>
+          </div>  
+      </form> 
+    </div>
+  </div>
+{% endblock %}

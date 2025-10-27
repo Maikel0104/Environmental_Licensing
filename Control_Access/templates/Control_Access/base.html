@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>DEMMA CHAT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/template.css' %}">
+    </head>
+    <body class="cor_fundo_body">
+        
+        <header class="row">
+            <div class="col-12 d-flex justify-content-around align-items-center cor_fundo_header header-demma">
+                <img src="{% static 'img/Brasao-Vacaria.png' %}" alt="Brasão de Vacaria" width="50px">
+                <span class="fs-1 text-light fw-bold p-5">DEMMA CHAT</span>
+                <img src="{% static 'img/homem.png' %}" alt="foto perfil" class="rounded-circle" width="50px">
+            </div>
+        </header> 
+    
+        <main class="container my-4">
+            {% block content %}
+            {% endblock %}
+        </main>
+        
+        <footer class="text-center text-muted mt-5">
+            <p>&copy; {% now "Y" %} Prefeitura de Vacaria. Todos os direitos reservados.</p>
+        </footer>
+    
+        <script src="https://kit.fontawesome.com/cc8e4b5f64.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/Script.js' %}"></script>
+    </body>
+</html>

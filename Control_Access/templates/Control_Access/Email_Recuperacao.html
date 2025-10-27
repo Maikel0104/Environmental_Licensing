@@ -1,0 +1,30 @@
+{% extends "Control_Access/base.html" %} 
+
+{% block content %}        
+    <div class="row d-flex flex-column align-items-center ">
+        <div class="col-11 col-sm-10 col-md-8 col-lg-6 my-5">  
+            <div class="d-flex flex-column align-items-end justify-content-end">
+                <a href="{% url 'login' %}">
+                    <button id="voltar_login" type="button" class="p-2 rounded-5 form-control bg bg-secondary "> 
+                        <i class="fa-3x fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </a>
+            </div>
+            <form method="post" class="d-flex flex-column justify-content-center" style="height: 30vh;">
+                {% csrf_token %}
+                <!-- SEÇÃO DE EMAIL-->
+                <div> 
+                    {{ form.as_p }}
+                    <p class="fst-italic text-center">Insira um email associado à sua conta. Um link para redefinir sua senha será enviado.</p>
+                </div>
+                <!-- SEÇÕES BOTÃO VOLTAR E AVANÇAR-->
+                <div class="d-flex justify-content-between">              
+                    <button type="submit" id="avancar_recuperacao" class="form-control bg bg-success">Avançar</button>
+                    <a href="{% url 'login' %}">
+                        <button type="button"  id="cancelar_recuperacao" class="form-control bg bg-secondary mx-3">Cancelar</button>
+                    </a>    
+                </div>
+            </form>
+        </div>
+    </div> <!-- /row -->
+{% endblock %}
