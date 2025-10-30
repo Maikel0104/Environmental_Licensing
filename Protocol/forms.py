@@ -21,10 +21,7 @@ class ProcessoForm(forms.ModelForm):
         # Este loop adiciona a classe 'form-control' do Bootstrap a todos os campos do formulário
         for field_name, field in self.fields.items():
             #  O 'tipo' deve ser um <select>
-            if field_name == 'tipo':
-                field.widget = forms.Select(attrs={'class': 'form-control'})
-            else:
-                field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['class'] = 'form-control'
         
         #Renomeia os labels
         self.fields['nome_solicitante'].label = 'Nome'

@@ -125,3 +125,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'login' # Redireciona para a página de login após logout
+
+#Diz ao django oque acontece depois de fazer login
+LOGIN_REDIRECT_URL = 'menu_principal'
