@@ -21,7 +21,7 @@ def historico_licencas(request):
     
     # Filtrando as licenças pelo usuário logado
     lista_de_licencas = processo_administrativo.objects.filter(
-        usuario=request.user,
+        user_fk=request.user,
         tipo="1 - Licenciamento"
         ).order_by('-data_criacao') # Mais recentes primeiro
 
@@ -29,7 +29,7 @@ def historico_licencas(request):
         'lista_de_licencas': lista_de_licencas
     }
 
-    return render(request, 'Protocol/historico_licencas.html', context)
+    return render(request, 'Protocol/tela_historico_licenca.html', context)
 
 # View 3: Histórico de denúncias
 @login_required
@@ -37,14 +37,14 @@ def historico_denuncias(request):
     # Busca as denúncias do usuário logado e as envia para o template
 
     lista_de_denuncias = processo_administrativo.objects.filter(
-        usuario=request.user,
+        user_fk=request.user,
         tipo="2 - Denúncia"
     ).order_by('-data_criacao') # Mais recentes primeiro
 
     context = {
         'lista_de_denuncias': lista_de_denuncias
     }
-    return render(request, 'Protocol/historico_denuncias.html', context)
+    return render(request, 'Protocol/tela_historico_denuncias.html', context)
 
 
 # View 4: Novo Pedido de Denúncia
