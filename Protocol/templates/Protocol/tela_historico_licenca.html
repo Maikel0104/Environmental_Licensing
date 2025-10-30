@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row align-items-center mb-4">        
+        <div class="col-4">
+            <a href="{% url 'menu_principal' %}" class="btn btn-light btn-lg border">
+                <i class="fa-solid fa-arrow-left me-2"></i>
+                Voltar
+            </a>
+        </div>
+        
+        <div class="col-4 text-center">
+            <h2 class="fw-bold">Histórico de Licenças</h2>
+        </div>
+
+        <div class="col-4">
+            </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center align-middle">
+            
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Nº Pedido</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Documento Emitido</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                
+                {% for licenca in lista_de_licencas %}
+                <tr>
+                    <td>{{ licenca.numero_pedido }}</td>
+                    
+                    <td>{{ licenca.nome_solicitante }}</td>
+                    
+                    <td>{{ licenca.tipo_licenca }}</td>
+                    
+                    <td>
+                        {% if licenca.status == 'Aprovado' %}
+                            <span class="badge bg-success">Aprovado</span>
+                        {% elif licenca.status == 'Pendente' %}
+                            <span class="badge bg-warning text-dark">Pendente</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ licenca.status }}</span>
+                        {% endif %}
+                    </td>
+                    
+                    <td>
+                        <a href="{{ licenca.documento.url }}" class="text-decoration-none" title="Baixar Documento">
+                            <i class="fa-solid fa-file-lines fa-2x"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% if not lista_de_licencas %}
+                <tr>
+                    <td colspan="5" class="p-5">Nenhuma licença encontrada.</td>
+                </tr>
+                {% endif %}
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

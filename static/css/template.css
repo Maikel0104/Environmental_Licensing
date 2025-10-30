@@ -12,8 +12,54 @@
     background-color: #D9D9D9;
 }
 
-/*Botão voltar da tela de cadastro*/
+/* ESTILO BOTÃO NOVO PEDIDO*/
+.estilo_botao_novo_pedido{
+    display: flex;
+    padding: 16px 12px;
+    align-items: center;
+    gap: 8px;
+} style .estilo_botao_novo_pedido{
+    border-radius: 30px;
+    background: #D9D9D9;
+}
 
+/*ESTILO BOTÃO SAIR*/
+.estilo_botao_sair{
+    display: flex;
+    padding: 16px 12px;
+    align-items: center;
+    gap: 8px;
+} style .estilo_botao_sair{
+    border-radius: 30px;
+    background: #D9D9D9;
+} 
+
+.form-box-demma {
+    background-color: #E1F0E3; /* Cor verde-claro do seu Figma */
+    border: 1px solid #C9E1CB; /* Borda sutil */
+}
+
+/*ESTILO BOTÃO LICENÇA*/
+.estilo_botao_licenca{
+    width: 437px;
+    height: 353px;
+    border-radius: 30px;
+    position: absolute;
+} style .estilo_botao_licenca{
+    border-radius: 30px;
+    background: rgba(165, 214, 167, 0.63);
+}
+
+
+.menu-card {
+    background-color: #E1F0E3; /* Cor verde-claro do seu Figma */
+    border: 2px solid #C9E1CB; /* Borda verde um pouco mais escura */
+    transition: transform 0.2s; /* Efeito suave ao passar o mouse */
+}
+.menu-card:hover {
+    transform: scale(1.03); /* Aumenta o card um pouco */
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1) !important;
+}
 
 /* Estilo base da tela de cadastro */
 #senha {

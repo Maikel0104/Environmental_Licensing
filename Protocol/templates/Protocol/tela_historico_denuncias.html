@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row align-items-center mb-4">
+        
+        <div class="col-4">
+            <a href="{% url 'menu_principal' %}" class="btn btn-light btn-lg border">
+                <i class="fa-solid fa-arrow-left me-2"></i>
+                Voltar
+            </a>
+        </div>
+        
+        <div class="col-4 text-center">
+            <h2 class="fw-bold">Histórico de Denúncias</h2>
+        </div>
+
+        <div class="col-4">
+            </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center align-middle">
+            
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Nº Pedido</th>
+                    <th scope="col">Rua</th>
+                    <th scope="col">Nº</th>
+                    <th scope="col">Bairro</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Relatório de Conclusão</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                
+                {% for denuncia in lista_de_denuncias %}
+                <tr>
+                    <td>{{ denuncia.numero_pedido }}</td>
+                    
+                    <td>{{ denuncia.rua }}</td>
+                    
+                    <td>{{ denuncia.numero_casa }}</td>
+                    
+                    <td>{{ denuncia.bairro }}</td>
+                    
+                    <td>
+                        {% if denuncia.status == 'Concluída' %}
+                            <span class="badge bg-success">Concluída</span>
+                        {% elif denuncia.status == 'Em Análise' %}
+                            <span class="badge bg-warning text-dark">Em Análise</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ denuncia.status }}</span>
+                        {% endif %}
+                    </td>
+                    
+                    <td>
+                        {% if denuncia.relatorio_conclusao %}
+                            <a href="{{ denuncia.relatorio_conclusao.url }}" class="text-decoration-none" title="Baixar Relatório">
+                                <i class="fa-solid fa-file-lines fa-2x"></i>
+                            </a>
+                        {% else %}
+                            <span>-</span> {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% if not lista_de_denuncias %}
+                <tr>
+                    <td colspan="6" class="p-5">Nenhuma denúncia encontrada.</td>
+                </tr>
+                {% endif %}
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

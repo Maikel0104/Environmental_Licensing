@@ -51,9 +51,24 @@ class FormularioCadastro(UserCreationForm):
         self.fields['password2'].label = "Confirmação de Senha"
         
     class Meta(UserCreationForm.Meta):
-        # o UserCreationForm já sabe que o model é User
-        # e que os campos padrão são username e os de senha.
-        pass
+        model = User
+        fields = ('username', 'nome_completo', 'email')
+    
+    def save(self, commit=True):
+        # Primeiro, salva o usuário com username e senha (criptografada)
+        user = super(FormularioCadastro, self).save(commit=False)
+
+        # Agora, pegue os dados extras do formulário limpo
+        user.email = self.cleaned_data['email']
+
+        # o 'User' não têm 'nome_completo', mas tem 'first_name' e 'last_name'
+        user.first_name = self.nome_completo.split(' ')[0]  # Primeiro nome
+        user.last_name = ' '.join(self.nome_completo.split(' ')[1:])  #
+
+        if commit:
+            user.save()  # Salva o usuário no banco de dados
+        
+        return user
     
 
 # Formulário 2: Para criar o Administrador

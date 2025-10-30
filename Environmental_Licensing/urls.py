@@ -21,5 +21,6 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', include('Control_Access.urls')),
+    path('', include('Protocol.urls')),  # URLs do aplicativo Protocol,
 ]
     
