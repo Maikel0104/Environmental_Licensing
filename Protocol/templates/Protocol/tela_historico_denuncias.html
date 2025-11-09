@@ -13,8 +13,7 @@
             <h2 class="fw-bold">Histórico de Denúncias</h2>
         </div>
 
-        <div class="col-4">
-            </div>
+        <div class="col-4"></div>
     </div>
 
     <div class="table-responsive">
@@ -35,7 +34,7 @@
                 
                 {% for denuncia in lista_de_denuncias %}
                 <tr>
-                    <td>{{ denuncia.numero_pedido }}</td>
+                    <td>{{ denuncia.protocolo }}</td>
                     
                     <td>{{ denuncia.rua }}</td>
                     
@@ -44,12 +43,16 @@
                     <td>{{ denuncia.bairro }}</td>
                     
                     <td>
-                        {% if denuncia.status == 'Concluída' %}
+                        {% if denuncia.status == 'C' %}
                             <span class="badge bg-success">Concluída</span>
-                        {% elif denuncia.status == 'Em Análise' %}
+                        {% elif denuncia.status == 'A' %}
                             <span class="badge bg-warning text-dark">Em Análise</span>
+                        {% elif denuncia.status == 'V' %}
+                            <span class="badge bg-secondary">À ser Vistoriado</span>
+                        {% elif denuncia.status == 'FE' %}
+                            <span class="badge bg-secondary">Está na fila de espera</span>
                         {% else %}
-                            <span class="badge bg-secondary">{{ denuncia.status }}</span>
+                            <span class="badge bg-secondary">Arquivado</span>
                         {% endif %}
                     </td>
                     
@@ -59,7 +62,8 @@
                                 <i class="fa-solid fa-file-lines fa-2x"></i>
                             </a>
                         {% else %}
-                            <span>-</span> {% endif %}
+                            <span>-</span> 
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

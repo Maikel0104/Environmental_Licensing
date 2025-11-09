@@ -12,8 +12,7 @@
             <h2 class="fw-bold">Histórico de Licenças</h2>
         </div>
 
-        <div class="col-4">
-            </div>
+        <div class="col-4"></div>
     </div>
 
     <div class="table-responsive">
@@ -33,19 +32,23 @@
                 
                 {% for licenca in lista_de_licencas %}
                 <tr>
-                    <td>{{ licenca.numero_pedido }}</td>
+                    <td>{{ licenca.protocolo }}</td>
                     
                     <td>{{ licenca.nome_solicitante }}</td>
                     
-                    <td>{{ licenca.tipo_licenca }}</td>
+                    <td>{{ licenca.tipo }}</td>
                     
                     <td>
-                        {% if licenca.status == 'Aprovado' %}
-                            <span class="badge bg-success">Aprovado</span>
-                        {% elif licenca.status == 'Pendente' %}
-                            <span class="badge bg-warning text-dark">Pendente</span>
+                        {% if licenca.status == 'C' %}
+                            <span class="badge bg-success">Concluído</span>
+                        {% elif licenca.status == 'A' %}
+                            <span class="badge btn-light text-dark">Em análise</span>
+                        {% elif licenca.status == 'V' %}
+                            <span class="badge bg-secondary">Á ser vistoriado</span>
+                        {% elif licenca.status == 'FE' %}
+                            <span class="badge bg-secondary">Está na Fila de Espera</span>
                         {% else %}
-                            <span class="badge bg-secondary">{{ licenca.status }}</span>
+                            <span class="badge bg-secondary">Arquivado</span>
                         {% endif %}
                     </td>
                     
