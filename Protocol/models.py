@@ -9,7 +9,7 @@ class processo_administrativo(models.Model):
     # Definindo as opções para o campo 'tipo'
     tipo_processo = [
         ("1 - Licenciamento", "Licenciamento"),
-        ("2 - Denúncia ", "Denúncia"),]
+        ("2 - Denúncia", "Denúncia"),]
     tipo_status = [
         ("FE", "Está na fila de espera"),
         ("V", "À ser vistoriado"),
