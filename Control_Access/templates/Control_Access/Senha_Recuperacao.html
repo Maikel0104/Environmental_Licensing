@@ -11,10 +11,12 @@
                 <div>
                     <label class="fs-1"> Nova Senha </label>
                     <br>
-                    <input class="mb-5 col-11 col-sm-10 col-md-8 col-lg-10" type="password" placeholder="Insira a nova senha">
+                    <input class="mb-5 col-11 col-sm-10 col-md-8 col-lg-10" type="password" name="new_password1" id="id_new_password1" placeholder="Insira a nova senha" required>
+                    {{ form.new_password1.errors }}
                     <br>
                     <label class="fs-1"> Confirma a senha </label>
-                    <input class="col-11 col-sm-10 col-md-8 col-lg-10" type="password" placeholder="Confirma a senha">
+                    <input class="col-11 col-sm-10 col-md-8 col-lg-10" type="password" name="new_password2" id="id_new_password2" placeholder="Confirma a senha" required>
+                    {{ form.new_password2.errors }}
                 </div>
                 <div>
                     <p class="fst-italic mt-2"> A senha de conter pelo menos 8 caracteres, incluindo letras, números e símbolos </p>

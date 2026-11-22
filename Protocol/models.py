@@ -4,7 +4,7 @@ from django.contrib.auth.models import User # Importe o modelo user
 
 class processo_administrativo(models.Model):
     # Campo de chave primária 'protocolo' que é auto-incrementado
-    protocolo = models.IntegerField(primary_key=True, auto_created=True)
+    protocolo = models.AutoField(primary_key=True)
     
     # Definindo as opções para o campo 'tipo'
     tipo_processo = [
@@ -32,6 +32,10 @@ class processo_administrativo(models.Model):
     status = models.CharField(max_length=20, choices=tipo_status)
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
     data_conclusao = models.DateField(null=True, blank=True)
+
+    # Arquivos emitidos pela secretaria (anexados pelo admin)
+    documento = models.FileField(upload_to='documentos/', null=True, blank=True)  # Licença emitida
+    relatorio_conclusao = models.FileField(upload_to='relatorios/', null=True, blank=True)  # Relatório da denúncia
 
     # Para representar o objeto como uma String, para dizer o andamento do processo administrativo  
 

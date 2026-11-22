@@ -58,6 +58,13 @@ class FormularioCadastro(UserCreationForm):
         model = User
         fields = ('username', 'email')
     
+    def clean_email(self):
+        # O email é usado como username, então precisa ser único
+        email = self.cleaned_data['email']
+        if User.objects.filter(username__iexact=email).exists() or User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError('Já existe uma conta cadastrada com este e-mail.')
+        return email
+
     def save(self, commit=True):
         # Primeiro, salva o usuário com username e senha (criptografada)
         user = super(FormularioCadastro, self).save(commit=False)
@@ -81,9 +88,13 @@ class FormularioCadastro(UserCreationForm):
 class UsuarioForm(forms.ModelForm): 
     def __init__(self, *args, **kwargs):
         super(UsuarioForm, self).__init__(*args, **kwargs)
+        # Aceita o CPF com pontuação (até 14 caracteres); o clean_cpf deixa só os 11 dígitos
+        self.fields['cpf'].max_length = 14
+        self.fields['cpf'].validators = []
+
         # Adicionando classes e placeholders para cada campo do formulário
         self.fields['cpf'].widget.attrs.update(
-            {'class': 'form-control border-success', 'placeholder': '___.____.____-__'}
+            {'class': 'form-control border-success', 'placeholder': '000.000.000-00', 'maxlength': '14'}
         )
 
         self.fields['data_nascimento'].widget.attrs.update(
@@ -91,6 +102,18 @@ class UsuarioForm(forms.ModelForm):
         )
         # (Adicione aqui os outros campos do seu modelo 'Usuario', 
         # como 'telefone', 'rua', etc., se você os quiser no formulário de cadastro)
+
+    def clean_cpf(self):
+        # Remove pontos e traço e garante que o CPF tenha 11 dígitos
+        cpf = self.cleaned_data.get('cpf')
+        if not cpf:
+            return None
+        cpf = ''.join(c for c in cpf if c.isdigit())
+        if len(cpf) != 11:
+            raise forms.ValidationError('O CPF deve conter 11 dígitos.')
+        if Usuario.objects.filter(cpf=cpf).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError('Já existe uma conta cadastrada com este CPF.')
+        return cpf
 
     class Meta:
         model = Usuario

@@ -128,3 +128,11 @@ LOGOUT_REDIRECT_URL = 'login' # Redireciona para a página de login após logout
 
 #Diz ao django oque acontece depois de fazer login
 LOGIN_REDIRECT_URL = 'menu_principal'
+
+# Arquivos enviados (documentos de licença e relatórios de denúncia)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Em desenvolvimento, os e-mails (ex.: recuperação de senha) são exibidos no terminal
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
